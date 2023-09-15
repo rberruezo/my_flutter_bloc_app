@@ -1,0 +1,40 @@
+# Files and directories created by pub.
+.dart_tool/
+.packages
+
+# Conventional directory for build outputs.
+build/
+
+# Avoid committing pubspec.lock for library packages; see
+# https://dart.dev/guides/libraries/private-files#pubspeclock.
+packages/**/pubspec.lock
+!packages/udx_playhub_container/pubspec.lock
+/pubspec.lock
+
+# FVM symlink to current version
+.fvm/flutter_sdk
+
+# VSCode configuration
+.vscode/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Generated code for Flutter plugins
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Generated build_runner code
+*.gr.dart
+*.g.dart
+
+# Miscellaneous
+*.DS_Store
+
+prebundle/
+
+# Code coverage related
+coverage/
