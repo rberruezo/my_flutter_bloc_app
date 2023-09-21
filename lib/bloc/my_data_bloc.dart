@@ -2,6 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:udx_playhub_model/udx_playhub_model.dart';
+
 abstract class MyDataState {}
 
 class MyDataInitial extends MyDataState {}
@@ -26,8 +28,26 @@ class FetchMyDataWithDelay extends MyDataEvent {}
 
 class FetchMyDataWithError extends MyDataEvent {}
 
+class MyBloc {
+  final MyApiClient apiClient;
+
+  MyBloc(this.apiClient);
+
+  Future<String> fetchApiData() async {
+    final data = await apiClient.fetchData();
+    return data;
+  }
+}
+
 class MyDataBloc extends Bloc<MyDataEvent, MyDataState> {
-  MyDataBloc() : super(MyDataInitial());
+  final PlayhubModel playhubClient;
+
+  MyDataBloc(this.playhubClient) : super(MyDataInitial());
+
+  Future<List<dynamic>?> fetchCatalog() async {
+    final data = await playhubClient.getCatalog();
+    return data;
+  }
 
   @override
   Stream<MyDataState> mapEventToState(MyDataEvent event) async* {
@@ -38,7 +58,7 @@ class MyDataBloc extends Bloc<MyDataEvent, MyDataState> {
         if (event is FetchMyDataWithDelay) {
           await Future.delayed(const Duration(seconds: 5));
         }
-        final response = await _fetchData();
+        final response = await fetchCatalog();
         if (response != null) {
           yield MyDataLoaded(response);
         }

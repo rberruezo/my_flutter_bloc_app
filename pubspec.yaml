@@ -31,7 +31,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^7.3.0
-  http: ^0.13.3
+  http: ^1.1.0
+  get_it: ^7.2.0
+  udx_playhub_model:
+    path: ../Universal/udx_playhub/packages/data/udx_playhub_model
 
 
   # The following adds the Cupertino Icons font to your application.
