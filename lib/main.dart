@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:udx_ipb_api/udx_ipb_api.dart';
 import 'package:udx_playhub_model/udx_playhub_model.dart';
-
+import 'package:udx_storage/udx_storage.dart';
 import 'bloc/my_data_bloc.dart';
 
 void main() {
@@ -11,8 +12,6 @@ void main() {
 }
 
 final getIt = GetIt.instance;
-
-import 'package:udx_storage/udx_storage.dart';
 
 class StorageImplementation implements Storage {
   StorageImplementation() {
@@ -42,28 +41,29 @@ class StorageImplementation implements Storage {
   }
 }
 
-  IpbApiConfiguration getIpbApiConfiguration() {
-    return IpbApiConfiguration(
-        authToken:
-            'qxfeBs0rMzq2NBH5GeBc5TZCrwolXS2BEexq27QFiD5hMOGzOwuuZN4eBud2lOE',
-        baseURL: 'https://devapi.p331.valtech-tes.com/ipb/v1/',
-        park: 'USF',
-        resort: 'UOR',
-        land: 'VILLAIN-CON',
-        publisher: 'MA');
-  }
+IpbApiConfiguration getIpbApiConfiguration() {
+  return IpbApiConfiguration(
+      authToken:
+          'qxfeBs0rMzq2NBH5GeBc5TZCrwolXS2BEexq27QFiD5hMOGzOwuuZN4eBud2lOE',
+      baseURL: 'https://devapi.p331.valtech-tes.com/ipb/v1/',
+      park: 'USF',
+      resort: 'UOR',
+      land: 'VILLAIN-CON',
+      publisher: 'MA');
+}
 
-  PlayhubModel getPlayhub() {
-    return PlayhubModel(
-        configuration:
-            PlayhubConfiguration(ipbApiConfiguration: getIpbApiConfiguration()),
-        storage: StorageImplementation(),
-        storageKey: 'playhub_test_storage_key');
-  }
+PlayhubModel getPlayhub() {
+  return PlayhubModel(
+      configuration:
+          PlayhubConfiguration(ipbApiConfiguration: getIpbApiConfiguration()),
+      storage: StorageImplementation(),
+      storageKey: 'playhub_test_storage_key');
+}
 
 void setupDependencies() {
   // Register the MyApiClient class without using a singleton.
-  getIt.registerFactory(() => PlayhubModel(configuration: configuration, storage: storage, storageKey: storageKey));
+  getIt.registerFactory(() => PlayhubModel(
+      configuration: configuration, storage: storage, storageKey: storageKey));
 }
 
 class MyApp extends StatelessWidget {

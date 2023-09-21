@@ -35,6 +35,8 @@ dependencies:
   get_it: ^7.2.0
   udx_playhub_model:
     path: ../Universal/udx_playhub/packages/data/udx_playhub_model
+  udx_ipb_api:
+    path: ../Universal/udx_playhub/packages/data/udx_ipb_api
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -365,7 +365,7 @@ packages:
     source: path
     version: "0.0.1"
   udx_ipb_api:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "../Universal/udx_playhub/packages/data/udx_ipb_api"
       relative: true
