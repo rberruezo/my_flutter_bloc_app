@@ -28,17 +28,6 @@ class FetchMyDataWithDelay extends MyDataEvent {}
 
 class FetchMyDataWithError extends MyDataEvent {}
 
-class MyBloc {
-  final MyApiClient apiClient;
-
-  MyBloc(this.apiClient);
-
-  Future<String> fetchApiData() async {
-    final data = await apiClient.fetchData();
-    return data;
-  }
-}
-
 class MyDataBloc extends Bloc<MyDataEvent, MyDataState> {
   final PlayhubModel playhubClient;
 
