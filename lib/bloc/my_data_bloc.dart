@@ -50,6 +50,8 @@ class MyDataBloc extends Bloc<MyDataEvent, MyDataState> {
         final response = await fetchCatalog();
         if (response != null) {
           yield MyDataLoaded(response);
+        } else {
+          yield MyDataError('Error on Data Loading');
         }
       case FetchMyDataWithError:
         yield MyDataError('Error on Data Loading');

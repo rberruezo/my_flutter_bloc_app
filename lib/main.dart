@@ -62,7 +62,7 @@ void setupDependencies() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, Key? key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyDataPage extends StatelessWidget {
-  const MyDataPage({super.key, Key? key});
+  const MyDataPage({super.key});
 
   @override
   Widget build(BuildContext context) {
